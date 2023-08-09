@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+       
+       *{
+    margin:0;
+    padding:0;
+}
+body{
+   margin-top: 30px;
+   height:100vh ;
+    width:100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items:center;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkkfAlyaYDZ3wC7Hda9zaSb70_djcK0rFPqg&usqp=CAU);
+    background-size:100% ;
+    background-repeat: no-repeat;
+}
+#box{
+    width:40%;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.406) 0px 22px 70px 4px;
+}
+#main_div
+{
+    /* background-color:coral; */
+    color: black;
+    height:60%;
+}
+
+#column{
+    display: flex;
+}
+#row{
+    font-weight: bold;
+}
+label{
+    font-weight: bold;
+    margin: 1rem 3rem;
+    font-size: large;
+
+}
+#headeris{
+    margin: 1rem;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+    height:16vh;
+    /* color:coral; */
+    margin-top: 20px;
+    text-shadow: 16px 22px 11px rgba(0, 0, 0, 0.199);
+}
+
+#container{
+    /* text-align: center; */
+    margin-top: 20px;
+    
+}
+input,select{
+    padding:3%;
+    margin: 1rem 3rem;
+    border-top: #000000;
+    border-left: #000000;
+    border-right: #000000;
+    /* border-radius: 5px; */
+}
+#btn1{
+    
+    margin: 20px 30px;
+    padding:15px 55px;
+    background-color: blue;
+    color:white;
+    font-weight: bold;
+    border:none;
+    font-size: 30px;
+    border-radius: 15px;
+    width: 450px;
+
+}
+
+#btn1:hover{
+    background-color: rgb(125, 123, 112);
+    color: #000000;
+}
+
+#myresult{
+    font-size: 2.5rem;
+    text-align: center;
+    margin-top: 31px;
+}
+#resultcontainer{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    
+}
+form{margin-top:20px;}
+    </style>
+</head>
+
+<body>
+    <div id="box">
+    <h1 id="headeris">Temperature Converter</h1>
+    <!-- <h1 id="headern">Celsius to Fahrenheit</h1> -->
+    <div id="main_div">
+
+        <div id="container">
+            <form name="calculator" onsubmit="myfun();return false;">
+               <div id="column">
+                    <div id="row">
+                    <label>Degrees </label><br>
+                    <input type="text" id="temp" name="temp" >
+                    </div>
+                    
+                    <div id="row">
+                    <label>Type </label><br>
+                <select id="select_temp" name="select_temp" id="select_temp">
+                    <optgroup label="Temperature">
+                    <option value="Celcius" name="celcius">Celcius</option>
+                    <option value="Fehranheit" name="fahrenheit">Fahrenheit</option>
+                </optgroup>
+                </select>
+                    </div>
+                    </div>
+                <br>
+                <div id="row">
+                    <label>Result </label><br>
+                <div id="resultcontainer">
+                    <span id="myresult"></span>
+                </div></div>
+                <br /><br />
+                <input type="submit" id="btn1" value="Convert" />
+            </form>
+
+        </div>
+
+        
+    </div>
+</div>
+</body>
+<script>
+    let result;
+        const myfun = () => {
+            let temp = document.getElementById('temp').value;
+            console.log(temp);
+            let tempselector = document.getElementById('select_temp');
+            let n = tempselector.options.selectedIndex;
+            let selectionis = tempselector.options[n].value;
+            if (selectionis == 'Celcius') {
+                result = ((temp * 1.8) + 32)
+                document.getElementById('myresult').innerHTML = `  ${result.toFixed(3)}  Fahrenheit`
+            }
+            else {
+                result = ((temp - 32) / 1.8);
+                document.getElementById('myresult').innerHTML = ` ${result.toFixed(3)} Celcius`
+            }
+        }
+</script>
+</html>
